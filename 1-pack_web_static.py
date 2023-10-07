@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-"""This function compresses a folder with a .tgz extension"""
-from datetime import datetime
+"""Generates a .tgz archive from the contents of the web_static folder."""
 from fabric.api import local
-import os
+import time
 
 
 def do_pack():
+    """Generate an tgz archive from web_static folder"""
     try:
-        if not os.path.exists("versions"):
-            local('mkdir -p versions')
-        t = datetime.now()
-        f = "%Y%m%d%H%M%S"
-        archivePath = 'versions/web_static_{}.tgz'.format(t.strftime(f))
-        local('tar -czvf {} web_static'.format(archivePath))
-        return archivePath
+        local("mkdir -p versions")
+        local("tar -cvzf versions/web_static_{}.tgz web_static/".
+              format(time.strftime("%Y%m%d%H%M%S")))
+        return ("versions/web_static_{}.tgz".format(time.
+                                                    strftime("%Y%m%d%H%M%S")))
     except:
         return None
