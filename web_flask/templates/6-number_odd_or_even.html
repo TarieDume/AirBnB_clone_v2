@@ -1,15 +1,9 @@
-<!DOCTYPE HTML>
-<HTML lang="en">
-<HEAD>
-    <META charset="UTF-8">
-    <META name="viewport" content="width=device-width, initial-scale=1.0">
-    <TITLE>HBNB</TITLE>
-</HEAD>
-<BODY>
-    {% if number is even %}
-    <H1>Number: {{number}} is even</H1>
-    {% else %}
-    <H1>Number: {{number}} is odd</H1>
-    {% endif %}
-</BODY>
-</HTML>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HBNB</title>
+    </head>
+    <body>
+        <h1>Number: {{ n }} is {% if n % 2 == 0 %}even{% else %}odd{% endif %}</h1>
+    </body>
+</html>
